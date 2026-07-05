@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PersonalTracker.html</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css" rel="stylesheet" />
+</head>
+
+<body>
+    <section class="login">
+        <h2>Welcome Back</h2>
+        <p>Login to FinTrack Pro</p>
+        <form>
+            <div class="form-group">
+                <label>Username</label>
+                <input type="text" id="username" autocomplete="username" />
+                <span>Username is required..</span>
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" id="password" autocomplete="current-password" />
+                <span>Password is required..</span>
+            </div>
+            <button class="login-btn">Login</button>
+        </form>
+        <p>Don't have account? <a href="#" id="reg">Register here</a></p>
+    </section>
+    <section class="login register">
+        <h2>Welcome Back</h2>
+        <p>Join FinTrack Pro</p>
+        <form>
+            <div class="form-group">
+                <label>Choose a Username</label>
+                <input type="text" autocomplete="username" />
+                <span>Username is required..</span>
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" autocomplete="current-password" />
+                <span>Password is required..</span>
+            </div>
+            <button class="login-btn register-btn">Register</button>
+        </form>
+        <p>Already have account? <a id="log">Login here</a></p>
+    </section>
+    <section class="hero">
+        <!-- <h1>Hello This is Dashboard</h1> -->
+        <aside>
+            <section class="head">
+                <img src="download.png" alt="This is image">
+                <div>
+                    <h3>FinTrack Pro</h3>
+                    <p>Enterprise Finance</p>
+                </div>
+            </section>
+            <section class="side">
+                <div class="options">
+                    <a id="dashboardSideBarLink">
+                        <div class="item active">
+                            <i class="ri-dashboard-line"></i>
+                            <h3>Dashboard</h3>
+
+                        </div>
+                    </a>
+                    <a id="settings">
+                        <div class="item">
+                            <i class="ri-settings-4-fill"></i>
+                            <h3>Settings</h3>
+                        </div>
+                    </a>
+                </div>
+                <button class="add" id="addItem">+ Add Transaction</button>
+            </section>
+        </aside>
+        <main>
+            <nav>
+                <h3 class="user-name">name</h3>
+                <button class="log-out"><i class="ri-logout-box-r-line"></i>Log Out</button>
+            </nav>
+            <section class="main-content">
+                <div class="heading">
+                    <h1>Financial Overview</h1>
+                    <p>Real-time tracking application</p>
+                </div>
+                <div class="cards">
+                    <div class="top-lft demo">
+                        <div class="icon i i1"><i class="ri-bank-fill"></i></div>
+                        <div class="detail">
+                            <h4>Current Balance</h4>
+                            <h3 style="color: blue;font-size:25px;" id="currentBalance">$0.00</h3>
+                        </div>
+                    </div>
+                    <div class="left-mid demo">
+                        <div class="icon i i2"><i class="ri-arrow-right-up-fill"></i></div>
+                        <div class="detail">
+                            <h4>Total Income</h4>
+                            <h3 style="color:green;font-size:25px;" id="totalIncome">$0.00</h3>
+                        </div>
+                    </div>
+                    <div class="right-mid demo">
+                        <div class="icon i i3"><i class="ri-arrow-right-down-long-line"></i></div>
+                        <div class="detail">
+                            <h4>Total Expense</h4>
+                            <h3 style="color:red;font-size:25px;" id="totalExpence">$0.00</h3>
+                        </div>
+                    </div>
+                    <div class="top-right demo">
+                        <div class="icon i i1"><i class="ri-wallet-fill"></i></div>
+                        <div class="detail">
+                            <h4>Total Transitions</h4>
+                            <h3 style="color:#000;font-size:25px;" id="totalTrancision">0</h3>
+                        </div>
+                    </div>
+                    <div class="chart">
+                        <canvas id="myChart"></canvas>
+                    </div>
+                    <div class="preference">
+                        <h2>Preference</h2>
+
+                        <div class="dark-mode">
+                            <button id="themeBtn" value="light">🌙 Dark Mode</button>
+                        </div>
+
+                        <button class="reset"><i class="ri-delete-bin-line"></i>Reset All Data</button>
+                    </div>
+                    <div class="table">
+                        <h2>All Transactions</h2>
+                        <div class="searchs">
+                            <div class="search-box">
+                                <i class="ri-search-line"></i>
+                                <input type="text" id="search" placeholder="Search Transactions...">
+                            </div>
+                            <select id="globalCategory">
+                                <option value="">Select Category</option>
+                                <option value="expense">Expense</option>
+                                <option value="income">Income</option>
+                            </select>
+                        </div>
+                        <table>
+                            <thead>
+                                <th>Date</th>
+                                <th>Type</th>
+                                <th>Catagory</th>
+                                <th>Amount</th>
+                                <th>Actions</th>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="nothing"></div>
+                </div>
+            </section>
+            <section class="add-form">
+                <form id="addItemForm">
+                    <div class="add-form-head">
+                        <h2>Add Transactions</h2>
+                        <button class="close"><i class="ri-close-large-line"></i></button>
+                    </div>
+                    <label for="type">Type</label>
+                    <select required id="type">
+                        <option value="">Select Type</option>
+                        <option value="expense">Expense</option>
+                        <option value="income">Income</option>
+                    </select>
+                    <span>This is rquired...</span>
+
+                    <label for="">Description</label>
+                    <input type="text" required id='description' placeholder="e.g, Amazon,Salary,Coffee" />
+                    <span>This is rquired...</span>
+                    <div class="input-group">
+                        <label for="">Amount</label>
+                        <input required type="number" id="amount" />
+                        <span>This is rquired...</span>
+                        <label for="">Date</label>
+                        <input required type="date" id="date" />
+                        <span>This is rquired...</span>
+                    </div>
+                    <label for="category">Category</label>
+                    <select required id="category">
+                        <option value="">Select Category</option>
+                        <option value="f&d">Food & Dining</option>
+                        <option value="shoping">Shopping</option>
+                        <option value="r&b">Research & Bill</option>
+                        <option value="p&a">Petrol & auto</option>
+                        <option value="utilities">Utilities</option>
+                        <option value="salary">Salary</option>
+                        <option value="entertainment">Entertainment</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <span>This is rquired...</span>
+                    <button class="add" id="addTransactionBtn">+ Add Transaction</button>
+                </form>
+            </section>
+            <section id="setting-page">
+                <div>
+                    <h2>Settings</h2>
+                    <p>Manage your account Profile & app formatting</p>
+                </div>
+                <div class="personal-info">
+                    <form action="">
+                        <h2>Profile Details</h2>
+                        <div class="inp-fields">
+                            <div class="personal-form-grp">
+                                <label for="name">Full Name</label>
+                                <input type="text" placeholder="Enter Name Here." id="fullName">
+                            </div>
+                            <div class="personal-form-grp">
+                                <label for="cur">Currency</label>
+                                <Select id="curr">
+                                    <option value="">Select Currency From here</option>
+                                    <option value="INR">INR (₹) - Indian Rupee</option>
+                                    <option value="USD">USD ($) - US Dollar</option>
+                                    <option value="EUR">EUR (€) - Euro</option>
+                                    <option value="GBP">GBP (£) - British Pound</option>
+                                    <option value="JPY">JPY (¥) - Japanese Yen</option>
+                                    <option value="AUD">AUD (A$) - Australian Dollar</option>
+                                    <option value="CAD">CAD (C$) - Canadian Dollar</option>
+                                    <option value="CNY">CNY (¥) - Chinese Yuan</option>
+                                    <option value="AED">AED (د.إ) - UAE Dirham</option>
+                                    <option value="SAR">SAR (﷼) - Saudi Riyal</option>
+                                </Select>
+                            </div>
+                        </div>
+                        <button class="saveChange" id="saveChange">Save Changes</button>
+                    </form>
+                </div>
+            </section>
+        </main>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
